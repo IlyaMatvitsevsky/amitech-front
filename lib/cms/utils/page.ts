@@ -32,7 +32,8 @@ const normalizeButtonLink = (
 }
 
 export const normalizeImage = (image: ImageFragment): Image => ({
-  url: `${process.env.STRAPI_FILE_URL}${image.data?.attributes?.url || ''}`,
+  // url: `${process.env.STRAPI_FILE_URL}${image.data?.attributes?.url || ''}`,
+  url: image.data?.attributes?.url || '',
   altText: image.data?.attributes?.alternativeText || '',
   height: image && image.data ? image.data.attributes?.height : null,
   width: image && image.data ? image.data.attributes?.width : null,
