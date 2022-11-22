@@ -1,0 +1,40 @@
+.root {
+  @apply inline-flex justify-center items-center bg-transparent text-sm w-44 h-11 uppercase font-semibold;
+}
+
+.root:hover {
+  @apply scale-[1.01]
+}
+
+.primary {
+  @apply border border-primary text-primary;
+}
+
+.primary:hover {
+  @apply border-hover-primary text-primary-hover;
+}
+
+
+.secondary {
+  @apply bg-primary text-white border border-primary;
+}
+
+.secondary:hover {
+  @apply bg-secondary-primary;
+}
+
+.link {
+  @apply relative decoration-1 text-base;
+}
+
+.link::after {
+  @apply absolute content-['\279D'] right-0 top-2.5 text-primary scale-[2];
+}
+
+.linkLight {
+  @apply text-white decoration-1 underline hover:no-underline;
+}
+
+.disabled {
+  @apply pointer-events-none opacity-30;
+}

@@ -1,0 +1,39 @@
+.wrapper {
+  @apply flex md:flex-row flex-col gap-4 p-4 h-full;
+}
+
+.imageWrapper {
+  @apply min-w-[100px] w-[100px] h-[100px];
+}
+
+.figure {
+  @apply relative aspect-[1];
+}
+
+.figure img {
+  @apply rounded-full;
+}
+
+.info {
+  @apply flex flex-col w-[calc(100%_-_10px)];
+}
+
+.info::before {
+  @apply absolute content-[url('./images/quote.png')] scale-[1.5];
+}
+
+.text {
+  @apply pt-6 pb-4;
+}
+
+.author {
+  @apply mt-auto mb-1.5 font-bold relative;
+}
+
+.author::before {
+  @apply absolute content-[''] -mt-2 bg-primary w-[70px] h-[3px]
+}
+
+.company {
+  @apply text-sm text-gray mt-0.5 mb-1
+}

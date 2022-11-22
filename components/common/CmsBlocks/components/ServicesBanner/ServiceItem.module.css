@@ -1,0 +1,28 @@
+.wrapper {
+  @apply flex-col lg:flex-row gap-8 px-10 mb-4 pt-8 sm:pt-10 shadow-[0_0_15px_rgba(0,0,0,.15)];
+}
+
+.active {
+  @apply flex transition-all ease-in-out duration-300
+}
+
+.hide {
+  @apply hidden;
+}
+
+.info, .image {
+  @apply w-full lg:w-[calc(50%_-_2rem)]
+}
+
+.title {
+  @apply text-3xl font-bold mb-4
+}
+
+.text {
+  @apply text-base
+}
+
+
+.image {
+  @apply relative h-auto aspect-[1.30]
+}

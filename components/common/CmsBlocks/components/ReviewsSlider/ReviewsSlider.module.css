@@ -1,0 +1,31 @@
+.wrapper {
+  @apply my-10;
+}
+
+.titleInner {
+  @apply flex justify-between sm:flex-nowrap flex-wrap;
+}
+
+.title {
+  @apply font-['Amiri'] sm:px-4 mb-2 font-semibold sm:font-bold text-4xl sm:text-5xl;
+}
+
+.navigation {
+  @apply flex flex justify-end gap-6 w-full sm:w-auto my-8 sm:my-0;
+}
+
+.next, .prev {
+  @apply relative bg-slate-200 rounded-full font-bold text-4xl cursor-pointer w-[48px] h-[48px];
+}
+
+.next::before {
+  @apply content-['\276D'] -translate-x-[30%];
+}
+
+.prev::before {
+  @apply content-['\276C'] -translate-x-[70%];
+}
+
+.next::before, .prev::before {
+  @apply absolute flex justify-center items-center left-[50%] top-[50%] -translate-y-[48%];
+}

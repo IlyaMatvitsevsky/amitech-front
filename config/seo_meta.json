@@ -1,0 +1,25 @@
+{
+  "title": "Amitech Group PDM Ilya",
+  "titleTemplate": "%s - Amitech Group Accelerator",
+  "description": "Next.js Commerce - https://www.nextjs.org/commerce",
+  "openGraph": {
+    "title": "Amitech Group Accelerator",
+    "description": "Amitech Group Accelerator",
+    "type": "website",
+    "url": "http://localhost:3000/",
+    "site_name": "Amitech Group Accelerator",
+    "images": [
+      {
+        "url": "/favicon.ico",
+        "width": "17",
+        "height": "18",
+        "alt": "VSG Commerce Order Cloud Accelerator"
+      }
+    ]
+  },
+  "twitter": {
+    "handle": "@nextjs",
+    "site": "@nextjs",
+    "cardType": "summary_large_image"
+  }
+}

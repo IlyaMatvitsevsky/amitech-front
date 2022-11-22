@@ -1,0 +1,67 @@
+/** @type {import("tailwindcss").Config} */
+module.exports = {
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}",],
+  theme: {
+    extend: {
+      height: {
+        "540px": "540px",
+      },
+      margin: {
+        "10%": "10%",
+      },
+      padding: {
+        "10%": "10%",
+      },
+      maxWidth: {
+        "8xl": "1920px",
+      },
+      colors: {
+        primary: "var(--primary)",
+        "primary-2": "var(--primary-2)",
+        secondary: "var(--secondary)",
+        "secondary-2": "var(--secondary-2)",
+        hover: "var(--hover)",
+        "hover-primary": "var(--hover-primary)",
+        "secondary-primary": "var(--text-hover-primary)",
+        "background-1": "var(--background-color-1)",
+        "background-2": "var(--background-color-2)",
+        transparent: "var(--transparent)",
+        "hover-1": "var(--hover-1)",
+        "hover-2": "var(--hover-2)",
+        "accent-0": "var(--accent-0)",
+        "accent-1": "var(--accent-1)",
+        "accent-2": "var(--accent-2)",
+        "accent-3": "var(--accent-3)",
+        "accent-4": "var(--accent-4)",
+        "accent-5": "var(--accent-5)",
+        "accent-6": "var(--accent-6)",
+        "accent-7": "var(--accent-7)",
+        "accent-8": "var(--accent-8)",
+        "accent-9": "var(--accent-9)",
+        violet: "var(--violet)",
+        "violet-light": "var(--violet-light)",
+        "violet-dark": "var(--violet-dark)",
+        pink: "var(--pink)",
+        "pink-light": "var(--pink-light)",
+        cyan: "var(--cyan)",
+        blue: "var(--blue)",
+
+        grey: "var(--grey)",
+        "light-grey": "var(--light-grey)",
+        "blue-hover": "var(--blue-hover)",
+        "sky-hover": "var(--sky-hover)",
+        green: "var(--green)",
+        red: "var(--red)",
+      },
+      textColor: {
+        "active-link": "var(--active-link)",
+        default: "var(--text-default)",
+        primary: "var(--text-primary)",
+        'primary-hover': "var(--text-hover-primary)",
+        secondary: "var(--text-secondary)",
+        gray: "var(--text-gray)",
+      },
+    },
+  },
+  plugins: [],
+};

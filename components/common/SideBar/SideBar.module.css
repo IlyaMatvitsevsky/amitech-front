@@ -1,0 +1,31 @@
+.wrapper {
+  @apply z-30 absolute top-0 right-0 bottom-0 left-0 h-full bg-black bg-opacity-50
+}
+
+.inner {
+  @apply z-40 fixed left-0 top-0 bottom-0 bg-white h-[100vh] w-full max-w-[20rem];
+}
+
+.logo {
+  @apply flex justify-between items-center h-16 mx-4 border-b-[1px]
+}
+
+.logoLink {
+  @apply mx-auto
+}
+
+.button {
+  @apply relative
+}
+
+.button:before {
+  @apply absolute content-[''] w-[16px] h-[2px] rotate-45 bg-background-2 -translate-y-[50%] -translate-x-[50%]
+}
+
+.button:after {
+  @apply absolute content-[''] w-[16px] h-[2px] -rotate-45 bg-background-2 -translate-y-[50%] -translate-x-[50%]
+}
+
+.links {
+  @apply flex flex-col justify-center items-center uppercase mt-6 gap-4 font-semibold text-lg w-full mr-auto
+}

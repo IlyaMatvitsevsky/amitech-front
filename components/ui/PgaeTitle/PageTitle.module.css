@@ -1,0 +1,7 @@
+.title {
+  @apply w-full relative sm:mx-4 md:my-20 md:pb-8 px-4 font-semibold sm:font-bold text-4xl sm:text-5xl font-['Amiri']
+}
+
+.title::before {
+  @apply absolute bottom-0 content-[''] w-[100px] border-b-4 border-primary
+}

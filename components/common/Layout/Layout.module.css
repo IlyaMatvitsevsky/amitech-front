@@ -1,0 +1,8 @@
+.root {
+    @apply relative h-full bg-background-1 mx-auto transition-colors duration-150;
+    max-width: 1440px;
+}
+
+.mainOverflowHidden {
+    @apply overflow-x-hidden
+}

@@ -1,0 +1,13 @@
+{
+  "extends": ["next", "standard", "prettier"],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "no-unused-vars": "warn",
+    "node/no-callback-literal": 0,
+    "object-shorthand": [
+      "error",
+      "always"
+    ]
+  }
+}
+

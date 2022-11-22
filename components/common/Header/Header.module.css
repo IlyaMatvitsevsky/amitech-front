@@ -1,0 +1,66 @@
+.headerInner {
+  @apply sticky top-0 z-20 bg-background-1
+}
+
+.scroll {
+  @apply shadow-[0_0_15px_rgba(0,0,0,.15)]
+}
+
+.wrapper {
+  @apply h-16 sm:h-24 flex items-center justify-center xl:justify-start xl:px-10 px-5
+}
+
+.logo{
+  @apply xl:pr-14 w-[calc(100%_-_28px)] xl:w-auto flex justify-center
+}
+
+.links {
+  @apply hidden xl:flex uppercase font-semibold text-lg w-full mr-auto
+}
+
+.buttons {
+  @apply hidden xl:flex gap-6
+}
+
+.buttons button:first-child {
+  @apply relative bg-blend-color-burn
+}
+
+.buttons button:first-child::after {
+  @apply z-10 absolute content-['BETA'] top-0 -translate-y-[50%] -right-2 text-white bg-background-2 rounded-full px-2
+}
+
+.mobile {
+  @apply flex flex-wrap items-center justify-center py-4 px-16 xl:hidden bg-gray-100
+}
+
+.buttonsMobile button:first-child {
+  @apply relative bg-blend-color-burn
+}
+
+.buttonsMobile {
+  @apply flex flex-wrap gap-6
+}
+
+.buttonsMobile button:first-child::after {
+  @apply z-10 absolute content-['BETA'] top-0 -translate-y-[50%] -right-2 text-white bg-background-2 rounded-full px-2
+}
+
+.mobileButton {
+  @apply relative xl:hidden block w-[28px] h-[3px] bg-background-2 border-none
+}
+
+.mobileButton:after {
+  @apply absolute content-[''] left-0 top-2 w-[28px] h-[3px] bg-background-2
+}
+
+.mobileButton:before {
+  @apply absolute content-[''] left-0 bottom-2 w-[28px] h-[3px] bg-background-2
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    @apply px-32
+  }
+}
+

@@ -1,0 +1,15 @@
+.info {
+  @apply flex justify-between items-center mt-6 sm:mx-4;
+}
+
+.title {
+  @apply font-['Amiri'] text-4xl sm:text-5xl font-semibold sm:font-bold mb-2;
+}
+
+.link {
+  @apply text-primary mb-1;
+}
+
+.works {
+  @apply flex flex-wrap md:flex-nowrap justify-around;
+}

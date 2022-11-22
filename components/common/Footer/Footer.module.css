@@ -1,0 +1,11 @@
+.wrapper {
+  @apply flex flex-col-reverse sm:flex-row items-center justify-center gap-4 px-5 text-center sm:justify-between h-36 sm:h-24 bg-background-2 text-white xl:px-32
+}
+
+.text {
+  @apply pr-6
+}
+
+.icon {
+  @apply relative w-[24px] h-[24px]
+}

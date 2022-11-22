@@ -1,0 +1,47 @@
+.wrapper {
+    @apply flex flex-col md:flex-row px-4 my-4 items-center;
+}
+
+.wrapperInfo {
+    @apply flex flex-col justify-start pt-16 md:w-[42%];
+}
+
+.title {
+    @apply font-semibold text-xl mb-1.5 text-gray;
+}
+
+.text {
+    @apply text-3xl md:text-5xl font-bold mb-2 font-['Amiri'] pb-4 pt-6 sm:py-4 max-w-lg;
+}
+
+.wrapperImage {
+    @apply flex items-center self-stretch justify-center md:w-[58%] lg:h-[26rem] md:h-80 md:py-1 sm:h-96 sm:my-0.5 my-16;
+}
+
+.figure {
+    @apply relative w-[58%] aspect-[1.566];
+}
+
+.icons:before, .icons:after {
+  @apply content-[''] z-10 absolute w-[50%] h-[50%] bg-[length:100%_100%] bg-no-repeat;
+}
+
+.figure:before {
+    @apply  bottom-[-35%] right-[-20%]  bg-[url('./images/diagram.svg')];
+}
+
+.figure:after {
+    @apply top-[-10%] left-[-43%] bg-[url('./images/message.svg')];
+}
+
+.picture:before {
+    @apply z-0 top-[-8%] right-[-40%] translate-x-[-50%] translate-y-[-50%] bg-[url('./images/icons_banner.svg')];
+}
+
+.picture:after {
+    @apply top-[70%] left-[-20%] bg-[url('./images/schedule.svg')]
+}
+
+.wrapperImage img {
+    @apply align-middle;
+}

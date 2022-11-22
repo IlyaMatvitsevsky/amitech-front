@@ -1,0 +1,7 @@
+.wrapper {
+  @apply w-full flex flex-col justify-center items-center relative sm:pb-20;
+}
+
+.wrapper:before {
+  @apply -z-10 top-[25%] lg:top-[50%] absolute content-[''] w-[100vw] h-[75%] lg:h-[50%] bg-gray-100;
+}

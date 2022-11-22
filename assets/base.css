@@ -1,0 +1,128 @@
+:root {
+  --primary: #ff4a17;
+  /*--primary-2: #2484c6;*/
+  /*--secondary: #012C75;*/
+  /*--secondary-2: #111;*/
+  --selection: var(--cyan);
+  --active-link: #3B495B;
+
+  --text-default: #282A2B;
+  --text-primary: #ff4a17;
+  --text-hover-primary: #D12E00;
+  --text-secondary: #858585;
+  --text-gray: #7b7b7b;
+
+  --background-color-1: #ffffff;
+  --background-color-2: #182C3AFF;
+  --transparent: transparent;
+
+  --hover: rgba(0, 0, 0, 0.075);
+  --hover-primary: #D6D6D6;
+  --hover-1: rgba(0, 0, 0, 0.15);
+  --hover-2: rgba(0, 0, 0, 0.25);
+  --cyan: #22b8cf;
+  --green: #37b679;
+  --red: #e32d1c;
+  --purple: #f81ce5;
+  --blue: #012C75;
+  --blue-hover: #1731BC;
+  --sky-hover: #f0f7ff;
+  --grey: #c5c5c5;
+  --light-grey: #f7f8f8;
+
+  --pink: #ff0080;
+  --pink-light: #ff379c;
+
+  --magenta: #eb367f;
+
+  --violet: #7928ca;
+  --violet-dark: #4c2889;
+
+  --accent-0: #fff;
+  --accent-1: #fafafa;
+  --accent-2: #eaeaea;
+  --accent-3: #999999;
+  --accent-4: #888888;
+  --accent-5: #666666;
+  --accent-6: #444444;
+  --accent-7: #333333;
+  --accent-8: #111111;
+  --accent-9: #000;
+
+  --font-sans: 'Nunito Sans', sans-serif;
+}
+
+[data-theme='dark'] {
+}
+
+.swiper-slide {
+  height: auto !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  touch-action: manipulation;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color-1);
+  color: var(--text-default);
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+}
+
+a {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
