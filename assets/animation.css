@@ -52,3 +52,21 @@
   transform: translateY(0);
   transition: all 1000ms ease-in;
 }
+
+.homeBlockLast-appear {
+  transform: translateX(-100vw);
+}
+
+.homeBlockLast-appear-active {
+  transform: translateX(0);
+  transition: all 1000ms ease-in;
+}
+
+.homeBlockLast-enter {
+  transform: translateX(-100vw);
+}
+
+.homeBlockLast-enter-active {
+  transform: translateX(0);
+  transition: all 1000ms ease-in;
+}

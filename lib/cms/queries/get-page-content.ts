@@ -8,6 +8,9 @@ export const getPageContentQuery = /* GraphQL */ `
         attributes {
           title
           path
+          image {
+            ...Image
+          }
           blocks {
             __typename 
             ... on ComponentBlocksDescriptionBanner {
@@ -24,6 +27,7 @@ export const getPageContentQuery = /* GraphQL */ `
               text
             }
             ... on ComponentBlocksTechnologiesBanner {
+              isBg
               items {
                 name
                 work
@@ -35,6 +39,8 @@ export const getPageContentQuery = /* GraphQL */ `
             ... on ComponentBlocksOrganizationBanner {
               title
               text
+              direction
+              isBg
               lists {
                 item
               }              

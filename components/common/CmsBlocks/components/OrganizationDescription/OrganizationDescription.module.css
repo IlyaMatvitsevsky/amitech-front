@@ -6,6 +6,6 @@
     @apply p-5 md:max-w-[65%] mb-9 mt-6 relative text-[20px] break-words text-center;
 }
 
-.text:before {
+.textBefore:before {
     @apply absolute content-[''] left-[50%] translate-x-[-50%] top-0 h-0.5 w-[20%] border-t-2 border-primary;
 }

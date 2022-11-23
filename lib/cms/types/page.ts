@@ -55,12 +55,15 @@ export type TechnologiesBannerData = {
 type TechnologiesBanner = {
   type: BlockType.TechnologiesBanner
   items: TechnologiesBannerData[]
+  isBg: boolean
 }
 
 export type OrganizationBannerData = {
   image: Image | null
   title: string
   text: string
+  direction: string
+  isBg: boolean
   lists: { item: string }[] | null
 }
 
@@ -160,6 +163,7 @@ export type PageBlock =
 type PageContent = {
   isExist: boolean
   blocks: PageBlock[]
+  image: Image | null
 }
 
 export type GetPageContentOperation<T extends PageContent = PageContent> = {

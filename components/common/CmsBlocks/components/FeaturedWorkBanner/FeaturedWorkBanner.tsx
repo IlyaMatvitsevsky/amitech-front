@@ -28,8 +28,8 @@ const FeaturedWorkBanner: FC<FeaturedWorkBannerType> = ({ data }) => {
     setIsShow(inView)
   }, [ inView ])
   return (
-    <CSSTransition in={isShow} timeout={5000} classNames="homeBlock">
-      <div ref={ref}>
+    <CSSTransition in={isShow} timeout={1000} classNames="homeBlockLast">
+      <div ref={ref} className="overflow-y-hidden">
         {pathname === '/' && <div className={s.info}>
           <h2 className={s.title}>{title}</h2>
           <Link href="/case-studies" className={s.link}>View All</Link>

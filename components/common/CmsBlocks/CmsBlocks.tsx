@@ -21,31 +21,31 @@ const CmsBlocks: FC<Props> = ({ items }) => {
       {items.map((block, index) => {
         switch ( block.type ) {
           case BlockType.DescriptionBanner: {
-            return <DescriptionBanner key={block.type} data={block.data}/>
+            return <DescriptionBanner key={block.type+index+Date.now()} data={block.data}/>
           }
           case BlockType.OrganizationDescription: {
-            return <OrganizationDescription key={block.type} data={block.data}/>
+            return <OrganizationDescription key={block.type+index+Date.now()} data={block.data}/>
           }
           case BlockType.TechnologiesBanner: {
-            return <TechnologiesBanner key={block.type} data={block.items}/>
+            return <TechnologiesBanner key={block.type+index+Date.now()} isBg={block.isBg} data={block.items}/>
           }
           case BlockType.OrganizationBanner: {
-            return <OrganizationBanner key={block.type} data={block.data}/>
+            return <OrganizationBanner key={block.type+index+Date.now()} data={block.data}/>
           }
           case BlockType.ServicesBanner: {
-            return <ServicesBanner key={block.type} services={block.services} items={block.items}/>
+            return <ServicesBanner key={block.type+index+Date.now()} services={block.services} items={block.items}/>
           }
           case BlockType.AcceleratorBanner: {
-            return <AcceleratorBanner key={block.type} data={block.data}/>
+            return <AcceleratorBanner key={block.type+index+Date.now()} data={block.data}/>
           }
           case BlockType.OurOffersBanner: {
-            return <OurOffersBanner key={block.type} items={block.items}/>
+            return <OurOffersBanner key={block.type+index+Date.now()} items={block.items}/>
           }
           case BlockType.ReviewsSlider: {
-            return <ReviewsSlider key={block.type} data={block.data}/>
+            return <ReviewsSlider key={block.type+index+Date.now()} data={block.data}/>
           }
           case BlockType.FeaturedWorkBanner: {
-            return <FeaturedWorkBanner key={block.type} data={block.data}/>
+            return <FeaturedWorkBanner key={block.type+index+Date.now()} data={block.data}/>
           }
           // case BlockType.CategoryList: {
           //   return <FeaturedCategories key={index} data={block.data} items={block.items} />

@@ -1,54 +1,52 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { OrganizationBannerData } from '@lib/cms/types/page'
-import { CSSTransition } from 'react-transition-group';
+import Image from 'next/image';
 
 import s from './OrganizationBanner.module.css'
 import cn from 'clsx';
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-import { useInView } from 'react-intersection-observer';
 
 type OrganizationBannerType = {
   data: OrganizationBannerData
 }
 
 const OrganizationBanner: FC<OrganizationBannerType> = ({ data }) => {
-  const { text, title, image, lists } = data
-
-  const { inView, ref } = useInView()
-  const [ isShow, setIsShow ] = useState(false)
-
-  useEffect(() => {
-    if ( isShow ) {
-      return
+  const { text, title, image, lists, direction, isBg } = data
+  const { pathname } = useRouter()
+  const wrapperClassName = cn(
+    s.wrapper,
+    {
+      [s.row]: direction === 'row',
+      [s.reverse]: direction === 'revers',
+      [s.wrapperBg]: isBg,
     }
-    setIsShow(inView)
-  }, [ inView ])
+  )
 
   return (
-    <CSSTransition in={isShow} timeout={1000} classNames="homeBlock">
-      <div ref={ref} className={s.wrapper}>
-        <div className={s.imageWrapper}>
-          <figure className={cn(s.figure)}>
-            <Image
-              src={image?.url!}
-              layout="fill"
-              objectFit="fill"
-            />
-          </figure>
-        </div>
-        <div className={s.infoWrapper}>
-          <h2 className={s.title}>{title}</h2>
-          <p className={s.text}>{text}</p>
-          <div className={s.subtext}>
-            {lists && lists.map(({ item }, index) => (
-              <p key={index} className={s.list}>{item}</p>
-            ))
-            }
-          </div>
+    <div className={wrapperClassName}>
+      <div className={s.imageWrapper}>
+        <figure className={cn(s.figure)}>
+          <Image
+            src={image?.url!}
+            layout="fill"
+            objectFit="fill"
+          />
+        </figure>
+      </div>
+      <div className={s.infoWrapper}>
+        <h2 className={s.title}>{title}</h2>
+        <p className={s.text}>{text}</p>
+        <div className={cn(s.subtext,
+          { [s.listGrid]: lists && lists?.length > 1 && pathname !== '/' }
+        )}>
+          {lists && lists.map(({ item }, index) => (
+            <p key={index} className={s.list}>{item}</p>
+          ))
+          }
         </div>
       </div>
-    </CSSTransition>
+    </div>
   )
 }
 

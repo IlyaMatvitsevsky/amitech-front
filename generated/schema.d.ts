@@ -73,8 +73,10 @@ export type ComponentBlocksFeaturedWorkBannerItemsArgs = {
 
 export type ComponentBlocksOrganizationBanner = {
   __typename?: 'ComponentBlocksOrganizationBanner'
+  direction?: Maybe<Enum_Componentblocksorganizationbanner_Direction>
   id: Scalars['ID']
   image?: Maybe<UploadFileEntityResponse>
+  isBg?: Maybe<Scalars['Boolean']>
   lists?: Maybe<Array<Maybe<ComponentSharedList>>>
   text?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
@@ -139,6 +141,7 @@ export type ComponentBlocksServicesBannerServicesArgs = {
 export type ComponentBlocksTechnologiesBanner = {
   __typename?: 'ComponentBlocksTechnologiesBanner'
   id: Scalars['ID']
+  isBg?: Maybe<Scalars['Boolean']>
   items?: Maybe<Array<Maybe<ComponentTechnologiesBannerItemTechnologiesBannerItem>>>
 }
 
@@ -421,6 +424,11 @@ export type DateTimeFilterInput = {
   null?: InputMaybe<Scalars['Boolean']>
   or?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   startsWith?: InputMaybe<Scalars['DateTime']>
+}
+
+export enum Enum_Componentblocksorganizationbanner_Direction {
+  Revers = 'revers',
+  Row = 'row',
 }
 
 export enum Enum_Componentsharedbutton_Buttontype {
@@ -865,6 +873,7 @@ export type Page = {
   __typename?: 'Page'
   blocks?: Maybe<Array<Maybe<PageBlocksDynamicZone>>>
   createdAt?: Maybe<Scalars['DateTime']>
+  image?: Maybe<UploadFileEntityResponse>
   path?: Maybe<Scalars['String']>
   publishedAt?: Maybe<Scalars['DateTime']>
   seo?: Maybe<ComponentSeoSeo>
@@ -916,6 +925,7 @@ export type PageFiltersInput = {
 
 export type PageInput = {
   blocks?: InputMaybe<Array<Scalars['PageBlocksDynamicZoneInput']>>
+  image?: InputMaybe<Scalars['ID']>
   path?: InputMaybe<Scalars['String']>
   publishedAt?: InputMaybe<Scalars['DateTime']>
   seo?: InputMaybe<ComponentSeoSeoInput>
@@ -1497,6 +1507,19 @@ export type GetPageContentQuery = {
         __typename?: 'Page'
         title?: string
         path?: string
+        image?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: {
+              __typename?: 'UploadFile'
+              alternativeText?: string
+              url: string
+              width?: number
+              height?: number
+            }
+          }
+        }
         blocks?: Array<
           | {
               __typename: 'ComponentBlocksAcceleratorBanner'
@@ -1605,6 +1628,8 @@ export type GetPageContentQuery = {
               __typename: 'ComponentBlocksOrganizationBanner'
               title?: string
               text?: string
+              direction?: Enum_Componentblocksorganizationbanner_Direction
+              isBg?: boolean
               lists?: Array<{ __typename?: 'ComponentSharedList'; item?: string }>
               image?: {
                 __typename?: 'UploadFileEntityResponse'
@@ -1721,6 +1746,7 @@ export type GetPageContentQuery = {
             }
           | {
               __typename: 'ComponentBlocksTechnologiesBanner'
+              isBg?: boolean
               items?: Array<{
                 __typename?: 'ComponentTechnologiesBannerItemTechnologiesBannerItem'
                 name?: string

@@ -1,19 +1,23 @@
 import { FC, useEffect, useState } from 'react'
 import { TechnologiesBannerData } from '@lib/cms/types/page'
 import { CSSTransition } from 'react-transition-group';
-
-import s from './TechnologiesBanner.module.css'
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
 
+import s from './TechnologiesBanner.module.css'
+import cn from 'clsx';
+import { useRouter } from 'next/router';
+
 type OrganizationBannerType = {
-  data: TechnologiesBannerData[]
+  data: TechnologiesBannerData[],
+  isBg: boolean
 }
 
-const TechnologiesBanner: FC<OrganizationBannerType> = ({ data }) => {
+const TechnologiesBanner: FC<OrganizationBannerType> = ({ data, isBg }) => {
 
   const { inView, ref } = useInView()
   const [ isShow, setIsShow ] = useState(false)
+  const { pathname } = useRouter()
 
   useEffect(() => {
     if ( isShow ) {
@@ -27,7 +31,15 @@ const TechnologiesBanner: FC<OrganizationBannerType> = ({ data }) => {
   }
   return (
     <CSSTransition in={isShow} timeout={1000} classNames="homeBlock">
-      <div ref={ref} className={s.wrapper}>
+      <div
+        ref={ref}
+        className={cn(s.wrapper,
+          {
+            [s.wrapperBg]: isBg,
+            [s.shadow]: pathname === '/'
+          }
+        )}
+      >
         <div className={s.wrapperInner}>
           {data.map(({ name, work, image }, index) => {
             const imageRatio = image?.width! / image?.height!

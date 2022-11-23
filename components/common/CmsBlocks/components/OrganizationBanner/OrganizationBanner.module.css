@@ -1,8 +1,16 @@
 .wrapper {
-  @apply flex flex-wrap justify-center items-center w-full p-4 pb-10 md:mb-10 sm:pb-14 md:pb-20 md:pt-4 relative;
+  @apply flex flex-wrap justify-center items-center w-full p-4 pb-10 md:mb-10 sm:pb-14 md:pb-20 md:pt-20 relative;
 }
 
-.wrapper:before {
+.row {
+  @apply flex-row
+}
+
+.reverse {
+  @apply flex-row-reverse
+}
+
+.wrapperBg:before {
   @apply top-0 h-full absolute left-[50%] -translate-x-[50%] w-[100vw] content-[''] bg-background-2 overflow-hidden;
 }
 
@@ -15,7 +23,11 @@
 }
 
 .infoWrapper {
-  @apply flex flex-col justify-start w-full md:w-[50%] text-white z-10 md:pl-20 lg:pl-36;
+  @apply flex flex-col justify-start w-full md:w-[50%] z-10 md:pr-20 lg:pr-36;
+}
+
+.wrapperBg .infoWrapper {
+  @apply text-white md:pl-20 lg:pl-36 pr-0;
 }
 
 .title {
@@ -23,11 +35,19 @@
 }
 
 .text {
-  @apply text-lg mb-8 text-gray
+  @apply text-lg mb-8 text-gray;
 }
 
 .subtext {
-  @apply pl-4 border-l-2 border-primary
+  @apply pl-4 border-l-2 border-primary;
+}
+
+.listGrid {
+  @apply flex flex-wrap gap-6 border-none;
+}
+
+.listGrid .list {
+  @apply w-[30%] pl-4 border-l-2 border-primary;
 }
 
 .list:not(:last-child) {

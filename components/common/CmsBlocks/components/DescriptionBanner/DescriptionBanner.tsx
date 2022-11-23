@@ -1,6 +1,5 @@
 import { FC, useEffect, useState } from 'react'
 import { DescriptionBannerData } from '@lib/cms/types/page'
-import { CSSTransition } from 'react-transition-group';
 
 import s from './DescriptionBanner.module.css'
 import Image from 'next/image';
@@ -14,20 +13,9 @@ type DescriptionBannerType = {
 
 const DescriptionBanner: FC<DescriptionBannerType> = ({ data }) => {
 
-  const { inView, ref } = useInView()
-  const [isShow, setIsShow] = useState(false)
-
-  useEffect(() => {
-    if ( isShow ) {
-      return
-    }
-    setIsShow(inView)
-  }, [ inView ])
-
   const { description, button, image, title } = data
   return (
-    <CSSTransition in={isShow} timeout={1000} classNames="homeBlock">
-      <div className={s.wrapper} ref={ref}>
+      <div className={s.wrapper}>
         <div className={s.wrapperInfo}>
           <p className={s.title}>{title}</p>
           <p className={s.text}>{description}</p>
@@ -49,7 +37,6 @@ const DescriptionBanner: FC<DescriptionBannerType> = ({ data }) => {
           </figure>
         </div>
       </div>
-    </CSSTransition>
   )
 }
 

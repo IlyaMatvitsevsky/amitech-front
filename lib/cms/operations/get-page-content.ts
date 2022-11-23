@@ -3,7 +3,7 @@ import { CmsConfig, OperationContext, OperationOptions } from '../types'
 import { getPageContentQuery } from '../queries/get-page-content'
 import { GetPageContentQuery, GetPageContentQueryVariables } from '../../../generated/schema';
 import { filterEdges } from '@lib/cms/utils/array';
-import { contentHandler } from '@lib/cms/utils/page';
+import { contentHandler, normalizeImage } from '@lib/cms/utils/page';
 
 export default function getPageContentOperation({config}: OperationContext) {
   async function getPageContent<T extends GetPageContentOperation>(opts: {
@@ -44,20 +44,24 @@ export default function getPageContentOperation({config}: OperationContext) {
         return {
           isExist: false,
           blocks: [],
+          image: null
         }
       }
 
       const blocks = page.attributes?.blocks || []
+      const image = page.attributes?.image ?  normalizeImage(page.attributes?.image) : null
       const noNullableContent = filterEdges(blocks)
 
       return {
         isExist: true,
         blocks: noNullableContent.map((item) => contentHandler.normalizeBlock(item)),
+        image
       }
     } catch {
       return {
         isExist: false,
         blocks: [],
+        image: null
       }
     }
   }
