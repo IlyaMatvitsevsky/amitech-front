@@ -1,7 +1,8 @@
 import type { GetStaticPropsContext } from 'next'
 import { getPageData } from '@lib/page-data'
 import cms from '@lib/cms';
-import FeatureWorksPage from '@components/pages/FeaturesWorks';
+import dynamic from 'next/dynamic';
+const FeatureWorksPage = dynamic(() => import('@components/pages/FeaturesWorks'))
 
 export async function getStaticProps(options: GetStaticPropsContext<{ pages: string[] }>) {
   const pageDataPromise = getPageData(options)

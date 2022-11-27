@@ -3,10 +3,10 @@ import { OurOffersBannerData } from '@lib/cms/types/page';
 import { Button } from '@components/ui';
 import Image from 'next/image';
 import { CSSTransition } from 'react-transition-group';
+import { useInView } from 'react-intersection-observer';
 
 import s from './OurOfferItem.module.css'
 import cn from 'clsx';
-import { useInView } from 'react-intersection-observer';
 
 type OurOfferItemType = {
   item: OurOffersBannerData
@@ -33,6 +33,7 @@ export const OurOfferItem: FC<OurOfferItemType> = ({ item, count }) => {
         <div className={s.imageMobileWrapper}>
           <figure className={cn(s.figure)}>
             <Image
+              alt={image?.altText}
               src={image?.url!}
               layout="fill"
               objectFit="fill"
@@ -53,6 +54,7 @@ export const OurOfferItem: FC<OurOfferItemType> = ({ item, count }) => {
       <div className={s.imageWrapper}>
         <figure className={cn(s.figure)}>
           <Image
+            alt={image?.altText}
             src={image?.url!}
             layout="fill"
             objectFit="fill"

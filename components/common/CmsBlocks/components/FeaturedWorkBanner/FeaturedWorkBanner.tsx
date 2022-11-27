@@ -3,10 +3,10 @@ import { FeaturedWorkBannerData } from '@lib/cms/types/page';
 import { Link } from '@components/ui';
 import FeaturedWorkItem from './FeaturedWorkItem';
 import { CSSTransition } from 'react-transition-group';
-
-import s from './FeaturedWorkBanner.module.css'
 import { useRouter } from 'next/router';
 import { useInView } from 'react-intersection-observer';
+
+import s from './FeaturedWorkBanner.module.css'
 
 type FeaturedWorkBannerType = {
   data: FeaturedWorkBannerData

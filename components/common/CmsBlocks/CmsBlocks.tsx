@@ -1,15 +1,19 @@
 import { FC } from 'react'
 import { BlockType, PageBlock } from '@lib/cms/types/page'
+import dynamic from 'next/dynamic';
 
-import DescriptionBanner from '@components/common/CmsBlocks/components/DescriptionBanner';
-import OrganizationDescription from '@components/common/CmsBlocks/components/OrganizationDescription';
-import TechnologiesBanner from '@components/common/CmsBlocks/components/TechnologiesBanner';
-import OrganizationBanner from '@components/common/CmsBlocks/components/OrganizationBanner';
-import ServicesBanner from '@components/common/CmsBlocks/components/ServicesBanner';
-import AcceleratorBanner from '@components/common/CmsBlocks/components/AcceleratorBanner';
-import OurOffersBanner from '@components/common/CmsBlocks/components/OurOffersBanner';
-import ReviewsSlider from '@components/common/CmsBlocks/components/ReviewsSlider';
-import FeaturedWorkBanner from '@components/common/CmsBlocks/components/FeaturedWorkBanner';
+const DescriptionBanner = dynamic( () => import('@components/common/CmsBlocks/components/DescriptionBanner'));
+const OrganizationDescription = dynamic( () => import('@components/common/CmsBlocks/components/OrganizationDescription'));
+const TechnologiesBanner = dynamic( () => import('@components/common/CmsBlocks/components/TechnologiesBanner'));
+const OrganizationBanner = dynamic( () => import('@components/common/CmsBlocks/components/OrganizationBanner'));
+const ServicesBanner = dynamic( () => import('@components/common/CmsBlocks/components/ServicesBanner'));
+const AcceleratorBanner = dynamic( () => import('@components/common/CmsBlocks/components/AcceleratorBanner'));
+const OurOffersBanner = dynamic( () => import('@components/common/CmsBlocks/components/OurOffersBanner'));
+const ReviewsSlider = dynamic( () => import('@components/common/CmsBlocks/components/ReviewsSlider'));
+const FeaturedWorkBanner = dynamic( () => import('@components/common/CmsBlocks/components/FeaturedWorkBanner'));
+const EngagementModel = dynamic( () => import('@components/common/CmsBlocks/components/EngagementModel'));
+const CodeOfConductBanner = dynamic( () => import('@components/common/CmsBlocks/components/CodeOfConductBanner'));
+const ContactUsBanner = dynamic( () => import('@components/common/CmsBlocks/components/ContactUsBanner'));
 
 interface Props {
   items: PageBlock[]
@@ -47,9 +51,15 @@ const CmsBlocks: FC<Props> = ({ items }) => {
           case BlockType.FeaturedWorkBanner: {
             return <FeaturedWorkBanner key={block.type+index+Date.now()} data={block.data}/>
           }
-          // case BlockType.CategoryList: {
-          //   return <FeaturedCategories key={index} data={block.data} items={block.items} />
-          // }
+          case BlockType.EngagementModel: {
+            return <EngagementModel key={block.type+index+Date.now()} data={block.data}/>
+          }
+          case BlockType.CodeOfConductBanner: {
+            return <CodeOfConductBanner key={block.type+index+Date.now()} data={block.data}/>
+          }
+          case BlockType.ContactInfoBanner: {
+            return <ContactUsBanner key={block.type+index+Date.now()} data={block.data}/>
+          }
           default: {
             return null
           }

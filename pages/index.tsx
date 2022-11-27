@@ -1,7 +1,8 @@
 import type { GetStaticPropsContext } from 'next'
 import cms from '@lib/cms';
-import Home from '@components/pages/Home';
 import { getPageData } from '@lib/page-data';
+import dynamic from 'next/dynamic';
+const Home = dynamic(() => import('@components/pages/Home'));
 
 export async function getStaticProps(options: GetStaticPropsContext) {
   const pageDataPromise = getPageData(options)

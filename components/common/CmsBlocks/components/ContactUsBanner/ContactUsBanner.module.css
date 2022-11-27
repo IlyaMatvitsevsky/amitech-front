@@ -1,0 +1,27 @@
+.wrapper {
+  @apply z-10 relative max-w-full lg:max-w-[24rem] min-w-[24rem] my-auto pt-8 pr-2 pb-6 pl-8;
+}
+
+.wrapper:before {
+  @apply -z-[1] absolute content-[''] h-full w-full left-5 bottom-5 border-primary border-2
+}
+
+.wrapper:after {
+  @apply -z-[1] content-[''] top-0 left-0 absolute h-full w-full bg-gray-100;
+}
+
+.title {
+  @apply text-2xl font-semibold
+}
+
+.item {
+  @apply flex items-center justify-start gap-6 py-2.5
+}
+
+.contactTitle {
+  @apply font-semibold mb-0.5
+}
+
+.image {
+  @apply relative h-[32px] aspect-[1.30]
+}

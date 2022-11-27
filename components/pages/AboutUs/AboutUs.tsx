@@ -28,6 +28,7 @@ const AboutUs: FC<DataType> = ({ blocks, image }) => {
       <PageTitle title="About Us" />
       <div className="relative my-4" style={{aspectRatio: `${getImageRatio()}`}}>
         <Image
+          priority
           placeholder="blur"
           blurDataURL={placeholderImg}
           src={image?.url || ''}

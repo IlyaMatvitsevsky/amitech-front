@@ -10,6 +10,9 @@ export enum BlockType {
   OurOffersBanner = 'OurOffersBanner',
   ReviewsSlider = 'ReviewsSlider',
   FeaturedWorkBanner = 'FeaturedWorkBanner',
+  EngagementModel = 'EngagementModel',
+  CodeOfConductBanner = 'CodeOfConductBanner',
+  ContactInfoBanner = 'ContactInfoBanner',
   NoType = 'NoType',
 }
 
@@ -17,6 +20,7 @@ export enum ButtonType {
   Primary = 'primary',
   Secondary = 'secondary',
   Link = 'link',
+  Contact = 'contact'
 }
 
 export type Link = {
@@ -148,6 +152,49 @@ type FeaturedWorkBanner = {
   data: FeaturedWorkBannerData
 }
 
+export type EngagementModelData = {
+  title: string
+  description: string
+  items: {
+    name: string
+    icon: Image | null
+  }[]
+}
+
+type EngagementModel = {
+  type: BlockType.EngagementModel
+  data: EngagementModelData
+}
+
+export type CodeOfConductBannerData = {
+  title: string
+  list: {
+    item: string
+  }[]
+}
+
+type CodeOfConductBanner = {
+  type: BlockType.CodeOfConductBanner
+  data: CodeOfConductBannerData
+}
+
+type ContactInfoBannerItem = {
+  title: string
+  text: string
+  link: Link[] | null
+  icon: Image | null
+}
+
+export type ContactInfoBannerData = {
+  title: string
+  items: ContactInfoBannerItem[]
+}
+
+type ContactInfoBanner = {
+  type: BlockType.ContactInfoBanner
+  data: ContactInfoBannerData
+}
+
 export type PageBlock =
   | DescriptionBanner
   | OrganizationDescription
@@ -158,6 +205,9 @@ export type PageBlock =
   | OurOffersBanner
   | ReviewsSlider
   | FeaturedWorkBanner
+  | EngagementModel
+  | CodeOfConductBanner
+  | ContactInfoBanner
   | { type: BlockType.NoType }
 
 type PageContent = {

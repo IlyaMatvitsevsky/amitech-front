@@ -51,6 +51,7 @@ const TechnologiesBanner: FC<OrganizationBannerType> = ({ data, isBg }) => {
                 >
                   <picture>
                     <Image
+                      alt={image?.altText}
                       src={image?.url!}
                       layout="fill"
                       objectFit="contain"

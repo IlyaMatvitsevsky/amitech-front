@@ -29,8 +29,8 @@ const normalizedFooterIcons = (items?: CmsFooterIcons): IIconItem[] => {
     const { icon, href: rawHref } = item
     const href = rawHref || ''
     const text = icon?.data?.attributes?.alternativeText || ''
-    // const url = `${process.env.STRAPI_FILE_URL}${icon?.data?.attributes?.url}` || ''
-    const url = icon?.data?.attributes?.url || ''
+    const url = `${process.env.STRAPI_FILE_URL}${icon?.data?.attributes?.url}` || ''
+    // const url = icon?.data?.attributes?.url || ''
     return {
       href,
       text,

@@ -2,6 +2,7 @@ import { ButtonFragment, GetPageContentQuery, ImageFragment } from 'generated/sc
 import { BlockType, ButtonType, Link, PageBlock } from '../types/page';
 import { Image } from '../types/image';
 import { filterEdges } from '@lib/cms/utils/array';
+import { normalizeButtonsType } from '@lib/cms/utils/header';
 
 type Data = NonNullable<NonNullable<GetPageContentQuery['pages']>['data'][0]>
 
@@ -16,6 +17,9 @@ const normalizeButtonType = (type: string) => {
   }
   if(type === 'Link') {
     return ButtonType.Link
+  }
+  if(type === 'Contact') {
+    return ButtonType.Contact
   }
 }
 
@@ -32,8 +36,8 @@ const normalizeButtonLink = (
 }
 
 export const normalizeImage = (image: ImageFragment): Image => ({
-  // url: `${process.env.STRAPI_FILE_URL}${image.data?.attributes?.url || ''}`,
-  url: image.data?.attributes?.url || '',
+  url: `${process.env.STRAPI_FILE_URL}${image.data?.attributes?.url || ''}`,
+  // url: image.data?.attributes?.url || '',
   altText: image.data?.attributes?.alternativeText || '',
   height: image && image.data ? image.data.attributes?.height : null,
   width: image && image.data ? image.data.attributes?.width : null,
@@ -89,9 +93,10 @@ const technologiesBannerBlock = createContentBlockHandler<{
   __typename: 'ComponentBlocksTechnologiesBanner',
 }>({
   normalizeBlock: (contentBlock) => {
-    const { items } = contentBlock
+    const { items, isBg } = contentBlock
     return {
       type: BlockType.TechnologiesBanner,
+      isBg: isBg || false,
       items: filterEdges(items).map(({ image, name, work }) => ({
         image: image ? normalizeImage(image) : null,
         name: name || '',
@@ -105,12 +110,14 @@ const organizationBannerBlock = createContentBlockHandler<{
   __typename: 'ComponentBlocksOrganizationBanner',
 }>({
   normalizeBlock: (contentBlock) => {
-    const { title, text, lists, image } = contentBlock
+    const { title, text, lists, image, direction, isBg } = contentBlock
     return {
       type: BlockType.OrganizationBanner,
       data: {
         title: title || '',
         text: text || '',
+        isBg: isBg || false,
+        direction: direction || 'row',
         lists: lists ? filterEdges(lists).map(({ item }) => ({item: item || ''})) : null ,
         image: image ? normalizeImage(image) : null,
       }
@@ -213,6 +220,62 @@ const featuredWorkBannerBlock = createContentBlockHandler<{
   }
 })
 
+const engagementModelBlock = createContentBlockHandler<{
+  __typename: 'ComponentBlocksEngagementModel',
+}>({
+  normalizeBlock: (contentBlock) => {
+    const { title, description, items } = contentBlock
+    return {
+      type: BlockType.EngagementModel,
+      data: {
+        title: title || '',
+        description: description || '',
+        items: filterEdges(items || []).map(({ name, icon }) => ({
+          name: name || '',
+          icon: icon ? normalizeImage(icon) : null,
+        }))
+      }
+    }
+  }
+})
+
+const codeOfConductBannerBlock = createContentBlockHandler<{
+  __typename: 'ComponentBlocksCodeOfConductBanner',
+}>({
+  normalizeBlock: (contentBlock) => {
+    const { title, list } = contentBlock
+    return {
+      type: BlockType.CodeOfConductBanner,
+      data: {
+        title: title || '',
+        list: filterEdges(list || []).map(({ item }) => ({
+          item: item || '',
+        }))
+      }
+    }
+  }
+})
+
+const contactInfoBannerBlock = createContentBlockHandler<{
+  __typename: 'ComponentBlocksContactInfoBanner',
+}>({
+  normalizeBlock: (contentBlock) => {
+    const { title, items } = contentBlock
+    return {
+      type: BlockType.ContactInfoBanner,
+      data: {
+        title: title || '',
+        items: filterEdges(items || []).map(({ text, title, icon, link }) => ({
+          title: title || '',
+          text: text || '',
+          icon: icon ? normalizeImage(icon) : null,
+          link: link ? normalizeButtonsType(link) : null
+        }))
+      }
+    }
+  }
+})
+
 const errorBlock = createContentBlockHandler<{
   __typename: 'Error',
 }>({
@@ -234,6 +297,9 @@ const blockHandlers = {
   ComponentBlocksOurOffersBanner: ourOffersBannerBlock,
   ComponentBlocksReviewsSliderBanner: reviewsSliderBannerBlock,
   ComponentBlocksFeaturedWorkBanner: featuredWorkBannerBlock,
+  ComponentBlocksEngagementModel: engagementModelBlock,
+  ComponentBlocksCodeOfConductBanner: codeOfConductBannerBlock,
+  ComponentBlocksContactInfoBanner: contactInfoBannerBlock,
   Error: errorBlock,
 }
 

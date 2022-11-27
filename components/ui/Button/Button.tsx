@@ -3,12 +3,13 @@ import { LinkProps } from 'next/link'
 import cn from 'clsx'
 import Link from '@components/ui/Link'
 import { LoadingDots } from '@components/ui'
+
 import s from './Button.module.css'
 
 export type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   href?: LinkProps['href']
   className?: string
-  variant?: 'primary' | 'secondary' | 'link'
+  variant?: 'primary' | 'secondary' | 'link' | 'contact'
   loading?: boolean
 }
 
@@ -26,9 +27,10 @@ const Button: FC<Props> = (props) => {
   const rootClassName = cn(
     s.root,
     {
-      [s.primary]: variant === 'primary',
-      [s.secondary]: variant === 'secondary',
-      [s.link]: variant === 'link',
+      [s.primary]: variant == 'primary',
+      [s.secondary]: variant == 'secondary',
+      [s.link]: variant == 'link',
+      [s.contact]: variant == 'contact'
     },
     className
   )

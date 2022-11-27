@@ -6,11 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import { ReviewsSliderData } from '@lib/cms/types/page';
 import { CSSTransition } from 'react-transition-group';
-
-import s from './ReviewsSlider.module.css'
 import { ReviewItem } from '@components/common/CmsBlocks/components/ReviewsSlider/ReviewItem';
 import { useScreenWidth } from '@components/hooks';
 import { useInView } from 'react-intersection-observer';
+
+import s from './ReviewsSlider.module.css'
+
 
 type ReviewsSliderType = {
   data: ReviewsSliderData

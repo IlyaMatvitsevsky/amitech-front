@@ -112,6 +112,35 @@ export const getPageContentQuery = /* GraphQL */ `
                 }
               }
             }
+            ... on ComponentBlocksEngagementModel {
+              title
+              description
+              items {
+                name
+                icon {
+                  ...Image
+                }
+              }
+            }
+            ... on ComponentBlocksCodeOfConductBanner {
+              title
+              list {
+                item
+              }
+            }
+            ... on ComponentBlocksContactInfoBanner {
+              title
+              items {
+                link {
+                  ...Button
+                }
+                title
+                icon {
+                  ...Image
+                }
+                text
+              }
+            }
           }
         }
       }

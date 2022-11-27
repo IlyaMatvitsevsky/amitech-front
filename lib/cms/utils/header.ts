@@ -3,7 +3,7 @@ import { filterEdges } from '@lib/cms/utils/array';
 import { normalizeImage } from '@lib/cms/utils/page';
 import { ButtonType, Link } from '@lib/cms/types/page';
 
-const normalizeButtonType = (array?: CmsHeaderButtons): Link[] => {
+export const normalizeButtonsType = (array?: CmsHeaderButtons): Link[] => {
   return filterEdges(array).map(({ buttonType, label, href, linkType, page }) => {
     if ( linkType === 'Page' ) {
       return {
@@ -13,6 +13,20 @@ const normalizeButtonType = (array?: CmsHeaderButtons): Link[] => {
             : ButtonType.Secondary,
         path: page?.data?.attributes?.path || '/',
         label: label || '',
+      }
+    }
+    if( linkType === 'Email' ) {
+      return {
+        buttonType: ButtonType.Contact,
+        label: label || '',
+        path: `mailto:${href}` || '',
+      }
+    }
+    if( linkType === 'Phone' ) {
+      return {
+        buttonType: ButtonType.Contact,
+        label: label || '',
+        path: `tel:${href}` || '',
       }
     }
     return {
@@ -35,7 +49,7 @@ export const normalizeHeader = (item?: CmsHeaderItem): HeaderStructure => {
   return {
     logoUrl,
     logo: logo ? normalizeImage(logo) : null,
-    buttons: normalizeButtonType(buttons),
-    links: normalizeButtonType(links)
+    buttons: normalizeButtonsType(buttons),
+    links: normalizeButtonsType(links)
   }
 }

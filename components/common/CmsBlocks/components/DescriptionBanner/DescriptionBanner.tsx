@@ -1,11 +1,10 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { DescriptionBannerData } from '@lib/cms/types/page'
-
-import s from './DescriptionBanner.module.css'
 import Image from 'next/image';
 import { Button } from '@components/ui';
 import cn from 'clsx';
-import { useInView } from 'react-intersection-observer';
+
+import s from './DescriptionBanner.module.css'
 
 type DescriptionBannerType = {
   data: DescriptionBannerData
@@ -29,6 +28,8 @@ const DescriptionBanner: FC<DescriptionBannerType> = ({ data }) => {
           <figure className={cn(s.figure, s.icons)}>
             <picture className={cn(s.picture, s.icons)}>
               <Image
+                priority
+                alt={image?.altText}
                 src={image?.url!}
                 layout="fill"
                 objectFit="fill"

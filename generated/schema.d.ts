@@ -49,6 +49,32 @@ export type ComponentBlocksAcceleratorBanner = {
   title?: Maybe<Scalars['String']>
 }
 
+export type ComponentBlocksCodeOfConductBanner = {
+  __typename?: 'ComponentBlocksCodeOfConductBanner'
+  id: Scalars['ID']
+  list?: Maybe<Array<Maybe<ComponentSharedList>>>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksCodeOfConductBannerListArgs = {
+  filters?: InputMaybe<ComponentSharedListFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentBlocksContactInfoBanner = {
+  __typename?: 'ComponentBlocksContactInfoBanner'
+  id: Scalars['ID']
+  items?: Maybe<Array<Maybe<ComponentContactInfoItemContactInfoItem1>>>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksContactInfoBannerItemsArgs = {
+  filters?: InputMaybe<ComponentContactInfoItemContactInfoItem1FiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
 export type ComponentBlocksDescriptionBanner = {
   __typename?: 'ComponentBlocksDescriptionBanner'
   button?: Maybe<ComponentSharedButton>
@@ -56,6 +82,20 @@ export type ComponentBlocksDescriptionBanner = {
   id: Scalars['ID']
   image?: Maybe<UploadFileEntityResponse>
   title?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksEngagementModel = {
+  __typename?: 'ComponentBlocksEngagementModel'
+  description?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  items?: Maybe<Array<Maybe<ComponentServicesBannerItemServiceBannerSelectorItem>>>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentBlocksEngagementModelItemsArgs = {
+  filters?: InputMaybe<ComponentServicesBannerItemServiceBannerSelectorItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
 export type ComponentBlocksFeaturedWorkBanner = {
@@ -149,6 +189,30 @@ export type ComponentBlocksTechnologiesBannerItemsArgs = {
   filters?: InputMaybe<ComponentTechnologiesBannerItemTechnologiesBannerItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentContactInfoItemContactInfoItem1 = {
+  __typename?: 'ComponentContactInfoItemContactInfoItem1'
+  icon?: Maybe<UploadFileEntityResponse>
+  id: Scalars['ID']
+  link?: Maybe<Array<Maybe<ComponentSharedButton>>>
+  text?: Maybe<Scalars['String']>
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentContactInfoItemContactInfoItem1LinkArgs = {
+  filters?: InputMaybe<ComponentSharedButtonFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentContactInfoItemContactInfoItem1FiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentContactInfoItemContactInfoItem1FiltersInput>>>
+  link?: InputMaybe<ComponentSharedButtonFiltersInput>
+  not?: InputMaybe<ComponentContactInfoItemContactInfoItem1FiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentContactInfoItemContactInfoItem1FiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentFeaturedWorkBannerItemFeaturedWorkBannerItem = {
@@ -438,7 +502,9 @@ export enum Enum_Componentsharedbutton_Buttontype {
 }
 
 export enum Enum_Componentsharedbutton_Linktype {
+  Email = 'Email',
   Page = 'Page',
+  Phone = 'Phone',
   Url = 'URL',
 }
 
@@ -520,7 +586,10 @@ export type FooterInput = {
 
 export type GenericMorph =
   | ComponentBlocksAcceleratorBanner
+  | ComponentBlocksCodeOfConductBanner
+  | ComponentBlocksContactInfoBanner
   | ComponentBlocksDescriptionBanner
+  | ComponentBlocksEngagementModel
   | ComponentBlocksFeaturedWorkBanner
   | ComponentBlocksOrganizationBanner
   | ComponentBlocksOrganizationDescription
@@ -528,6 +597,7 @@ export type GenericMorph =
   | ComponentBlocksReviewsSliderBanner
   | ComponentBlocksServicesBanner
   | ComponentBlocksTechnologiesBanner
+  | ComponentContactInfoItemContactInfoItem1
   | ComponentFeaturedWorkBannerItemFeaturedWorkBannerItem
   | ComponentOurOffersBannerItemOurOffersBannerItem
   | ComponentReviewsSliderItemReviewsSliderItem
@@ -883,7 +953,10 @@ export type Page = {
 
 export type PageBlocksDynamicZone =
   | ComponentBlocksAcceleratorBanner
+  | ComponentBlocksCodeOfConductBanner
+  | ComponentBlocksContactInfoBanner
   | ComponentBlocksDescriptionBanner
+  | ComponentBlocksEngagementModel
   | ComponentBlocksFeaturedWorkBanner
   | ComponentBlocksOrganizationBanner
   | ComponentBlocksOrganizationDescription
@@ -1555,6 +1628,48 @@ export type GetPageContentQuery = {
               }
             }
           | {
+              __typename: 'ComponentBlocksCodeOfConductBanner'
+              title?: string
+              list?: Array<{ __typename?: 'ComponentSharedList'; item?: string }>
+            }
+          | {
+              __typename: 'ComponentBlocksContactInfoBanner'
+              title?: string
+              items?: Array<{
+                __typename?: 'ComponentContactInfoItemContactInfoItem1'
+                title?: string
+                text?: string
+                link?: Array<{
+                  __typename?: 'ComponentSharedButton'
+                  id: string
+                  label?: string
+                  linkType?: Enum_Componentsharedbutton_Linktype
+                  href?: string
+                  buttonType?: Enum_Componentsharedbutton_Buttontype
+                  page?: {
+                    __typename: 'PageEntityResponse'
+                    data?: {
+                      __typename?: 'PageEntity'
+                      attributes?: { __typename?: 'Page'; title?: string; path?: string }
+                    }
+                  }
+                }>
+                icon?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      alternativeText?: string
+                      url: string
+                      width?: number
+                      height?: number
+                    }
+                  }
+                }
+              }>
+            }
+          | {
               __typename: 'ComponentBlocksDescriptionBanner'
               title?: string
               description?: string
@@ -1586,6 +1701,28 @@ export type GetPageContentQuery = {
                   }
                 }
               }
+            }
+          | {
+              __typename: 'ComponentBlocksEngagementModel'
+              title?: string
+              description?: string
+              items?: Array<{
+                __typename?: 'ComponentServicesBannerItemServiceBannerSelectorItem'
+                name?: string
+                icon?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      alternativeText?: string
+                      url: string
+                      width?: number
+                      height?: number
+                    }
+                  }
+                }
+              }>
             }
           | {
               __typename: 'ComponentBlocksFeaturedWorkBanner'

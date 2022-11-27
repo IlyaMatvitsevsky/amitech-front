@@ -1,11 +1,10 @@
 import { FC } from 'react'
 import { OrganizationBannerData } from '@lib/cms/types/page'
 import Image from 'next/image';
-
-import s from './OrganizationBanner.module.css'
 import cn from 'clsx';
 import { useRouter } from 'next/router';
 
+import s from './OrganizationBanner.module.css'
 
 type OrganizationBannerType = {
   data: OrganizationBannerData
@@ -28,6 +27,7 @@ const OrganizationBanner: FC<OrganizationBannerType> = ({ data }) => {
       <div className={s.imageWrapper}>
         <figure className={cn(s.figure)}>
           <Image
+            alt={image?.altText}
             src={image?.url!}
             layout="fill"
             objectFit="fill"

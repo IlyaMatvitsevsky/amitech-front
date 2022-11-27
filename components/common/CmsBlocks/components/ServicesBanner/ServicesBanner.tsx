@@ -48,6 +48,7 @@ const ServicesBanner: FC<ServicesBannerType> = ({ services, items }) => {
                 >
                   <div className={s.image}>
                     <Image
+                      alt={service.icon?.altText}
                       src={service.icon?.url || ''}
                       layout="fill"
                       className={s.image}

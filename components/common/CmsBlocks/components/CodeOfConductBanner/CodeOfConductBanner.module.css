@@ -1,0 +1,15 @@
+.wrapper {
+  @apply relative flex flex-col justify-center items-center py-8 mb-2;
+}
+
+.wrapper:before {
+  @apply absolute content-[''] top-4 left-[50%] -translate-x-[50%] w-[120px] h-[2px] border-b-2 border-primary
+}
+
+.title {
+  @apply pt-3 text-3xl
+}
+
+.text {
+  @apply pt-3;
+}

@@ -27,6 +27,7 @@ const ServicesItem: FC<ServicesItemType> = ({ image, title, description, activeN
       </div>
       <div className={s.image}>
         <Image
+          alt={image?.altText}
           src={image?.url || ''}
           layout="fill"
         />

@@ -42,7 +42,13 @@ const Header: FC<Props> = ({ header }) => {
           </Button>
           <div className={s.logo}>
             <Link href={logoUrl}>
-              <Image width={190} height={50} layout="fixed" src={logo?.url || ''} alt={logo?.altText || 'logo'}/>
+              <Image
+                width={190}
+                height={50}
+                layout="fixed"
+                src={logo?.url || ''}
+                alt={logo?.altText || 'logo'}
+              />
             </Link>
           </div>
           <ul className={s.links}>

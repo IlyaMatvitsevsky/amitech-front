@@ -16,6 +16,7 @@ export const ReviewItem: FC<ReviewItemType> = ({ item }) => {
       <div className={s.imageWrapper}>
         <figure className={cn(s.figure)}>
           <Image
+            alt={avatar?.altText}
             src={avatar?.url!}
             layout="fill"
             objectFit="fill"

@@ -1,0 +1,19 @@
+.wrapper {
+  @apply px-4
+}
+
+.form {
+  @apply px-4 mb-8
+}
+
+.text {
+  @apply text-gray mb-1.5 mt-2 pb-6
+}
+
+.info {
+  @apply mb-8
+}
+
+.privacy {
+  @apply text-primary pl-1
+}

@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import { FeaturedWorkBannerItem } from '@lib/cms/types/page';
-
-import s from './FeaturedWorkItem.module.css'
 import { Button, Link } from '@components/ui';
 import cn from 'clsx';
 import Image from 'next/image';
+
+import s from './FeaturedWorkItem.module.css'
 
 type FeaturedWorkItemType = {
   item: FeaturedWorkBannerItem
@@ -18,6 +18,7 @@ const FeaturedWorkItem: FC<FeaturedWorkItemType> = ({ item }) => {
         <div className={s.imageWrapper}>
           <figure className={cn(s.figure)}>
             <Image
+              alt={image?.altText}
               src={image?.url!}
               layout="fill"
               objectFit="fill"

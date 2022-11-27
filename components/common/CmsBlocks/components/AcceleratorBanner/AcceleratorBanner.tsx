@@ -34,6 +34,7 @@ const AcceleratorBanner: FC<AcceleratorDataType> = ({ data }) => {
         <div className={s.imageWrapper}>
           <div className={cn(s.image)}>
             <Image
+              alt={bgImage?.altText}
               src={bgImage?.url || ''}
               layout="fill"
             />
