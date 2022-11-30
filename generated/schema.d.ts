@@ -466,6 +466,90 @@ export type ComponentTechnologiesBannerItemTechnologiesBannerItemFiltersInput = 
   work?: InputMaybe<StringFilterInput>
 }
 
+export type ComponentTechnologiesBannerItemTechnologiesBannerItemInput = {
+  id?: InputMaybe<Scalars['ID']>
+  image?: InputMaybe<Scalars['ID']>
+  name?: InputMaybe<Scalars['String']>
+  work?: InputMaybe<Scalars['String']>
+}
+
+export type ComponentWorkAboutWork = {
+  __typename?: 'ComponentWorkAboutWork'
+  description?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentWorkAboutWorkFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentWorkAboutWorkFiltersInput>>>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentWorkAboutWorkFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentWorkAboutWorkFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentWorkAboutWorkInput = {
+  description?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type ComponentWorkContactUsBanner = {
+  __typename?: 'ComponentWorkContactUsBanner'
+  button?: Maybe<ComponentSharedButton>
+  description?: Maybe<Scalars['String']>
+  id: Scalars['ID']
+  title?: Maybe<Scalars['String']>
+}
+
+export type ComponentWorkContactUsBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentWorkContactUsBannerFiltersInput>>>
+  button?: InputMaybe<ComponentSharedButtonFiltersInput>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentWorkContactUsBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentWorkContactUsBannerFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentWorkContactUsBannerInput = {
+  button?: InputMaybe<ComponentSharedButtonInput>
+  description?: InputMaybe<Scalars['String']>
+  id?: InputMaybe<Scalars['ID']>
+  title?: InputMaybe<Scalars['String']>
+}
+
+export type ComponentWorkWorkBanner = {
+  __typename?: 'ComponentWorkWorkBanner'
+  id: Scalars['ID']
+  images?: Maybe<UploadFileRelationResponseCollection>
+  items?: Maybe<Array<Maybe<ComponentTechnologiesBannerItemTechnologiesBannerItem>>>
+}
+
+export type ComponentWorkWorkBannerImagesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentWorkWorkBannerItemsArgs = {
+  filters?: InputMaybe<ComponentTechnologiesBannerItemTechnologiesBannerItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type ComponentWorkWorkBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentWorkWorkBannerFiltersInput>>>
+  items?: InputMaybe<ComponentTechnologiesBannerItemTechnologiesBannerItemFiltersInput>
+  not?: InputMaybe<ComponentWorkWorkBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentWorkWorkBannerFiltersInput>>>
+}
+
+export type ComponentWorkWorkBannerInput = {
+  id?: InputMaybe<Scalars['ID']>
+  images?: InputMaybe<Array<InputMaybe<Scalars['ID']>>>
+  items?: InputMaybe<Array<InputMaybe<ComponentTechnologiesBannerItemTechnologiesBannerItemInput>>>
+}
+
 export type DateTimeFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['DateTime']>>>
@@ -496,6 +580,7 @@ export enum Enum_Componentblocksorganizationbanner_Direction {
 }
 
 export enum Enum_Componentsharedbutton_Buttontype {
+  Contact = 'Contact',
   Link = 'Link',
   Primary = 'Primary',
   Secondary = 'Secondary',
@@ -610,15 +695,20 @@ export type GenericMorph =
   | ComponentSharedLink
   | ComponentSharedList
   | ComponentTechnologiesBannerItemTechnologiesBannerItem
+  | ComponentWorkAboutWork
+  | ComponentWorkContactUsBanner
+  | ComponentWorkWorkBanner
   | Footer
   | Header
   | I18NLocale
   | Page
+  | Privacy
   | UploadFile
   | UploadFolder
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
+  | Work
 
 export type Header = {
   __typename?: 'Header'
@@ -781,15 +871,18 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  createWork?: Maybe<WorkEntityResponse>
   deleteFooter?: Maybe<FooterEntityResponse>
   deleteHeader?: Maybe<HeaderEntityResponse>
   deletePage?: Maybe<PageEntityResponse>
+  deletePrivacy?: Maybe<PrivacyEntityResponse>
   deleteUploadFile?: Maybe<UploadFileEntityResponse>
   deleteUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
   /** Delete an existing user */
   deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  deleteWork?: Maybe<WorkEntityResponse>
   /** Confirm an email users email address */
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>
   /** Request a reset password token */
@@ -805,12 +898,14 @@ export type Mutation = {
   updateFooter?: Maybe<FooterEntityResponse>
   updateHeader?: Maybe<HeaderEntityResponse>
   updatePage?: Maybe<PageEntityResponse>
+  updatePrivacy?: Maybe<PrivacyEntityResponse>
   updateUploadFile?: Maybe<UploadFileEntityResponse>
   updateUploadFolder?: Maybe<UploadFolderEntityResponse>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
   /** Update an existing user */
   updateUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  updateWork?: Maybe<WorkEntityResponse>
   upload: UploadFileEntityResponse
 }
 
@@ -840,6 +935,10 @@ export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
 }
 
+export type MutationCreateWorkArgs = {
+  data: WorkInput
+}
+
 export type MutationDeletePageArgs = {
   id: Scalars['ID']
 }
@@ -857,6 +956,10 @@ export type MutationDeleteUsersPermissionsRoleArgs = {
 }
 
 export type MutationDeleteUsersPermissionsUserArgs = {
+  id: Scalars['ID']
+}
+
+export type MutationDeleteWorkArgs = {
   id: Scalars['ID']
 }
 
@@ -911,6 +1014,10 @@ export type MutationUpdatePageArgs = {
   id: Scalars['ID']
 }
 
+export type MutationUpdatePrivacyArgs = {
+  data: PrivacyInput
+}
+
 export type MutationUpdateUploadFileArgs = {
   data: UploadFileInput
   id: Scalars['ID']
@@ -928,6 +1035,11 @@ export type MutationUpdateUsersPermissionsRoleArgs = {
 
 export type MutationUpdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
+  id: Scalars['ID']
+}
+
+export type MutationUpdateWorkArgs = {
+  data: WorkInput
   id: Scalars['ID']
 }
 
@@ -1020,6 +1132,30 @@ export type PaginationArg = {
   start?: InputMaybe<Scalars['Int']>
 }
 
+export type Privacy = {
+  __typename?: 'Privacy'
+  createdAt?: Maybe<Scalars['DateTime']>
+  privacy?: Maybe<Scalars['String']>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+}
+
+export type PrivacyEntity = {
+  __typename?: 'PrivacyEntity'
+  attributes?: Maybe<Privacy>
+  id?: Maybe<Scalars['ID']>
+}
+
+export type PrivacyEntityResponse = {
+  __typename?: 'PrivacyEntityResponse'
+  data?: Maybe<PrivacyEntity>
+}
+
+export type PrivacyInput = {
+  privacy?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+}
+
 export enum PublicationState {
   Live = 'LIVE',
   Preview = 'PREVIEW',
@@ -1034,6 +1170,7 @@ export type Query = {
   me?: Maybe<UsersPermissionsMe>
   page?: Maybe<PageEntityResponse>
   pages?: Maybe<PageEntityResponseCollection>
+  privacy?: Maybe<PrivacyEntityResponse>
   uploadFile?: Maybe<UploadFileEntityResponse>
   uploadFiles?: Maybe<UploadFileEntityResponseCollection>
   uploadFolder?: Maybe<UploadFolderEntityResponse>
@@ -1042,6 +1179,8 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
+  work?: Maybe<WorkEntityResponse>
+  works?: Maybe<WorkEntityResponseCollection>
 }
 
 export type QueryFooterArgs = {
@@ -1071,6 +1210,10 @@ export type QueryPagesArgs = {
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type QueryPrivacyArgs = {
+  publicationState?: InputMaybe<PublicationState>
 }
 
 export type QueryUploadFileArgs = {
@@ -1110,6 +1253,17 @@ export type QueryUsersPermissionsUserArgs = {
 export type QueryUsersPermissionsUsersArgs = {
   filters?: InputMaybe<UsersPermissionsUserFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type QueryWorkArgs = {
+  id?: InputMaybe<Scalars['ID']>
+}
+
+export type QueryWorksArgs = {
+  filters?: InputMaybe<WorkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
 }
 
@@ -1511,6 +1665,62 @@ export type UsersPermissionsUserRelationResponseCollection = {
   data: Array<UsersPermissionsUserEntity>
 }
 
+export type Work = {
+  __typename?: 'Work'
+  aboutWork?: Maybe<ComponentWorkAboutWork>
+  contactUsBanner?: Maybe<ComponentWorkContactUsBanner>
+  createdAt?: Maybe<Scalars['DateTime']>
+  name?: Maybe<Scalars['String']>
+  publishedAt?: Maybe<Scalars['DateTime']>
+  updatedAt?: Maybe<Scalars['DateTime']>
+  workBanner?: Maybe<Array<Maybe<ComponentWorkWorkBanner>>>
+}
+
+export type WorkWorkBannerArgs = {
+  filters?: InputMaybe<ComponentWorkWorkBannerFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+}
+
+export type WorkEntity = {
+  __typename?: 'WorkEntity'
+  attributes?: Maybe<Work>
+  id?: Maybe<Scalars['ID']>
+}
+
+export type WorkEntityResponse = {
+  __typename?: 'WorkEntityResponse'
+  data?: Maybe<WorkEntity>
+}
+
+export type WorkEntityResponseCollection = {
+  __typename?: 'WorkEntityResponseCollection'
+  data: Array<WorkEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type WorkFiltersInput = {
+  aboutWork?: InputMaybe<ComponentWorkAboutWorkFiltersInput>
+  and?: InputMaybe<Array<InputMaybe<WorkFiltersInput>>>
+  contactUsBanner?: InputMaybe<ComponentWorkContactUsBannerFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<WorkFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<WorkFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  workBanner?: InputMaybe<ComponentWorkWorkBannerFiltersInput>
+}
+
+export type WorkInput = {
+  aboutWork?: InputMaybe<ComponentWorkAboutWorkInput>
+  contactUsBanner?: InputMaybe<ComponentWorkContactUsBannerInput>
+  name?: InputMaybe<Scalars['String']>
+  publishedAt?: InputMaybe<Scalars['DateTime']>
+  workBanner?: InputMaybe<Array<InputMaybe<ComponentWorkWorkBannerInput>>>
+}
+
 export type ButtonFragment = {
   __typename?: 'ComponentSharedButton'
   id: string
@@ -1530,6 +1740,14 @@ export type ImageFragment = {
     __typename?: 'UploadFileEntity'
     attributes?: { __typename?: 'UploadFile'; alternativeText?: string; url: string; width?: number; height?: number }
   }
+}
+
+export type ImagesFragment = {
+  __typename?: 'UploadFileRelationResponseCollection'
+  data: Array<{
+    __typename?: 'UploadFileEntity'
+    attributes?: { __typename?: 'UploadFile'; alternativeText?: string; url: string; width?: number; height?: number }
+  }>
 }
 
 export type GetFooterQueryVariables = Exact<{ [key: string]: never }>
@@ -1905,6 +2123,86 @@ export type GetPageContentQuery = {
             }
           | { __typename: 'Error' }
         >
+      }
+    }>
+  }
+}
+
+export type GetPrivacyQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetPrivacyQuery = {
+  __typename?: 'Query'
+  privacy?: {
+    __typename?: 'PrivacyEntityResponse'
+    data?: { __typename?: 'PrivacyEntity'; attributes?: { __typename?: 'Privacy'; privacy?: string } }
+  }
+}
+
+export type GetWorkQueryVariables = Exact<{
+  name?: InputMaybe<Scalars['String']>
+}>
+
+export type GetWorkQuery = {
+  __typename?: 'Query'
+  works?: {
+    __typename?: 'WorkEntityResponseCollection'
+    data: Array<{
+      __typename?: 'WorkEntity'
+      attributes?: {
+        __typename?: 'Work'
+        name?: string
+        workBanner?: Array<{
+          __typename?: 'ComponentWorkWorkBanner'
+          items?: Array<{
+            __typename?: 'ComponentTechnologiesBannerItemTechnologiesBannerItem'
+            name?: string
+            work?: string
+            image?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  alternativeText?: string
+                  url: string
+                  width?: number
+                  height?: number
+                }
+              }
+            }
+          }>
+          images?: {
+            __typename?: 'UploadFileRelationResponseCollection'
+            data: Array<{
+              __typename?: 'UploadFileEntity'
+              attributes?: {
+                __typename?: 'UploadFile'
+                alternativeText?: string
+                url: string
+                width?: number
+                height?: number
+              }
+            }>
+          }
+        }>
+        aboutWork?: { __typename?: 'ComponentWorkAboutWork'; title?: string; description?: string }
+        contactUsBanner?: {
+          __typename?: 'ComponentWorkContactUsBanner'
+          title?: string
+          description?: string
+          button?: {
+            __typename?: 'ComponentSharedButton'
+            id: string
+            label?: string
+            linkType?: Enum_Componentsharedbutton_Linktype
+            href?: string
+            buttonType?: Enum_Componentsharedbutton_Buttontype
+            page?: {
+              __typename: 'PageEntityResponse'
+              data?: { __typename?: 'PageEntity'; attributes?: { __typename?: 'Page'; title?: string; path?: string } }
+            }
+          }
+        }
       }
     }>
   }

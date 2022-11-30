@@ -4,7 +4,7 @@ export enum BlockType {
   DescriptionBanner = 'DescriptionBanner',
   OrganizationDescription = 'OrganizationDescription',
   TechnologiesBanner = 'TechnologiesBanner',
-  OrganizationBanner= 'OrganizationBanner',
+  OrganizationBanner = 'OrganizationBanner',
   ServicesBanner = 'ServicesBanner',
   AcceleratorBanner = 'AcceleratorBanner',
   OurOffersBanner = 'OurOffersBanner',
@@ -32,8 +32,8 @@ export type Link = {
 export type DescriptionBannerData = {
   title: string
   description: string
-  button: Link | null
-  image: Image | null
+  button: Link|null
+  image: Image|null
 }
 
 type DescriptionBanner = {
@@ -51,7 +51,7 @@ type OrganizationDescription = {
 }
 
 export type TechnologiesBannerData = {
-  image: Image | null
+  image: Image|null
   name: string
   work: string
 }
@@ -63,12 +63,12 @@ type TechnologiesBanner = {
 }
 
 export type OrganizationBannerData = {
-  image: Image | null
+  image: Image|null
   title: string
   text: string
   direction: string
   isBg: boolean
-  lists: { item: string }[] | null
+  lists: { item: string }[]|null
 }
 
 type OrganizationBanner = {
@@ -78,13 +78,13 @@ type OrganizationBanner = {
 
 export type ServicesBannerData = {
   name: string
-  icon: Image | null
+  icon: Image|null
 }
 
 export type ServicesBannerItem = {
   title: string
   description: string
-  image: Image | null
+  image: Image|null
 }
 
 type ServicesBanner = {
@@ -96,8 +96,8 @@ type ServicesBanner = {
 export type AcceleratorBannerData = {
   title: string
   text: string
-  button: Link | null
-  bgImage: Image | null
+  button: Link|null
+  bgImage: Image|null
 }
 
 type AcceleratorBanner = {
@@ -109,8 +109,8 @@ export type OurOffersBannerData = {
   title: string
   text: string
   benefits: { item: string }[]
-  button: Link | null
-  image: Image | null
+  button: Link|null
+  image: Image|null
 }
 
 type OurOffersBanner = {
@@ -119,7 +119,7 @@ type OurOffersBanner = {
 }
 
 export type ReviewsSliderItem = {
-  avatar: Image | null
+  avatar: Image|null
   text: string
   user: string
   company: string
@@ -138,8 +138,8 @@ type ReviewsSlider = {
 export type FeaturedWorkBannerItem = {
   title: string
   description: string
-  button: Link | null
-  image: Image | null
+  button: Link|null
+  image: Image|null
 }
 
 export type FeaturedWorkBannerData = {
@@ -157,7 +157,7 @@ export type EngagementModelData = {
   description: string
   items: {
     name: string
-    icon: Image | null
+    icon: Image|null
   }[]
 }
 
@@ -181,8 +181,8 @@ type CodeOfConductBanner = {
 type ContactInfoBannerItem = {
   title: string
   text: string
-  link: Link[] | null
-  icon: Image | null
+  link: Link[]|null
+  icon: Image|null
 }
 
 export type ContactInfoBannerData = {
@@ -196,24 +196,24 @@ type ContactInfoBanner = {
 }
 
 export type PageBlock =
-  | DescriptionBanner
-  | OrganizationDescription
-  | TechnologiesBanner
-  | OrganizationBanner
-  | ServicesBanner
-  | AcceleratorBanner
-  | OurOffersBanner
-  | ReviewsSlider
-  | FeaturedWorkBanner
-  | EngagementModel
-  | CodeOfConductBanner
-  | ContactInfoBanner
-  | { type: BlockType.NoType }
+  |DescriptionBanner
+  |OrganizationDescription
+  |TechnologiesBanner
+  |OrganizationBanner
+  |ServicesBanner
+  |AcceleratorBanner
+  |OurOffersBanner
+  |ReviewsSlider
+  |FeaturedWorkBanner
+  |EngagementModel
+  |CodeOfConductBanner
+  |ContactInfoBanner
+  |{ type: BlockType.NoType }
 
 type PageContent = {
   isExist: boolean
   blocks: PageBlock[]
-  image: Image | null
+  image: Image|null
 }
 
 export type GetPageContentOperation<T extends PageContent = PageContent> = {

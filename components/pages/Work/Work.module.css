@@ -1,0 +1,19 @@
+.about {
+  @apply z-10 relative py-8 md:px-11 py-20;
+}
+
+.about:before {
+  @apply -z-[1] absolute left-[50%] top-0 -translate-x-[50%] content-[''] h-full w-[100vw] bg-gray-200
+}
+
+.aboutTitle {
+  @apply mb-6 text-3xl font-semibold
+}
+
+.about ul {
+  @apply list-disc
+}
+
+.about p {
+  @apply py-2
+}

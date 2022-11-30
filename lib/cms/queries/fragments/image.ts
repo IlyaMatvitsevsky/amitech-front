@@ -10,3 +10,16 @@ export const imageFragment = /* GraphQL */`
     }
   }
 `
+
+export const imagesFragment = /* GraphQL */`
+  fragment Images on UploadFileRelationResponseCollection {
+    data {
+      attributes {
+        alternativeText
+        url
+        width
+        height
+      }
+    }
+  }
+`

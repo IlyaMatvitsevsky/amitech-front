@@ -1,4 +1,4 @@
-import { ButtonFragment, GetPageContentQuery, ImageFragment } from 'generated/schema';
+import { ButtonFragment, GetPageContentQuery, ImageFragment, ImagesFragment } from 'generated/schema';
 import { BlockType, ButtonType, Link, PageBlock } from '../types/page';
 import { Image } from '../types/image';
 import { filterEdges } from '@lib/cms/utils/array';
@@ -23,7 +23,7 @@ const normalizeButtonType = (type: string) => {
   }
 }
 
-const normalizeButtonLink = (
+export const normalizeButtonLink = (
   button: ButtonFragment,
 ): Link => {
   const label = button.label || ''
@@ -42,6 +42,16 @@ export const normalizeImage = (image: ImageFragment): Image => ({
   height: image && image.data ? image.data.attributes?.height : null,
   width: image && image.data ? image.data.attributes?.width : null,
 })
+
+export const normalizeImages = (images: ImagesFragment): Image[] => {
+  return images.data.map((image) => ({
+    url: `${process.env.STRAPI_FILE_URL}${image.attributes?.url || ''}`,
+    // url: image.data?.attributes?.url || '',
+    altText: image.attributes?.alternativeText || '',
+    height: image && image ? image.attributes?.height : null,
+    width: image && image ? image.attributes?.width : null,
+  }))
+}
 
 type NormalizeBlock<T> = (block: T) => PageBlock
 
