@@ -51,20 +51,20 @@ const Header: FC<Props> = ({ header }) => {
               />
             </Link>
           </div>
-          <ul className={s.links}>
+          <div className={s.links}>
             {links.map(({ label, path, buttonType }) => (
-              <li key={label} className="mr-7">
+              <div key={label} className="mr-7">
                 <Link href={path}>{label}</Link>
-              </li>
+              </div>
             ))}
-          </ul>
-          <ul className={s.buttons}>
+          </div>
+          <div className={s.buttons}>
             {buttons.map(({ label, path, buttonType }) => (
               <Button key={label} variant={buttonType} className="mr-2">
                 {label}
               </Button>
             ))}
-          </ul>
+          </div>
         </div>
       </header>
       <div className={s.mobile}>

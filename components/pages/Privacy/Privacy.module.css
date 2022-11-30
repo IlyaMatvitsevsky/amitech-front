@@ -1,0 +1,7 @@
+.wrapper {
+  @apply px-8
+}
+
+.wrapper ul {
+  @apply list-disc
+}
